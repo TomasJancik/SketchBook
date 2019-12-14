@@ -1,0 +1,13 @@
+{
+  "name": "sketchbook",
+  "version": "0.0.1",
+  "description": "Save a simple code (or any text) sketches",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TomasJancik/SketchBook"
+  },
+  "author": "Tomas Jancik",
+  "devDependencies": {
+    "typescript": "*"
+  }
+}
