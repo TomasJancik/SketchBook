@@ -1,3 +1,4 @@
+"use strict";
 var SketchBook = /** @class */ (function () {
     function SketchBook(target, navigation, tagname) {
         if (tagname === void 0) { tagname = "li"; }

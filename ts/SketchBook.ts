@@ -1,5 +1,5 @@
 class SketchBook {
-    private static addEl: Element = document.querySelector("#sketchAdd");
+    private static addEl: Element = document.querySelector("#sketchAdd") as Element;
 
     private handleAddClicked = (e: Event): void => {
         console.log("add clicked");
@@ -11,6 +11,6 @@ class SketchBook {
 }
 
 const sb = new SketchBook(
-    document.querySelector("article"),
-    document.querySelector("nav ul"),
+    document.querySelector("article") as Element,
+    document.querySelector("nav ul") as Element,
 );
