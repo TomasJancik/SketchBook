@@ -17,17 +17,24 @@ export class SketchBook {
         this.target.appendChild(el);
     }
 
+    private getSketchElement(index: number): Element|null {
+        return this.target.querySelector(":nth-child(" + index + ")");
+    }
+
+    private getSketch(index: number): Sketch|undefined {
+        return this.sketches[index - 1];
+    }
+
     private handleAddClicked = (e: Event): void => {
         this.sketches.push( new Sketch("Sketch " + String(this.sketches.length + 1)));
 
         this.render();
-        this.editSketch(this.sketches.length - 1);
+        this.editSketch(this.sketches.length);
     }
 
     private removeAllSketchElement(): void {
         document.querySelectorAll(this.tagname + "." + SketchBook.CONSTANTS.CSS.sketch_class).forEach((e: Element) => {
             e.remove();
-            console.log("remove")
         });
     }
 
@@ -36,7 +43,19 @@ export class SketchBook {
     }
 
     public editSketch(id: number):void {
-        console.log(id, this.sketches[id]);
+        const sketch: Sketch|undefined = this.getSketch(id);
+        const el: Element|null = this.getSketchElement(id);
+
+        if(null === el || undefined === sketch) {
+            return;
+        }
+
+        const inpt: HTMLInputElement = document.createElement("input");
+        inpt.setAttribute("type", "text");
+        inpt.value = sketch.name;
+
+        el.innerHTML = "";
+        el.appendChild(inpt);
     }
 
     public render(): void {
