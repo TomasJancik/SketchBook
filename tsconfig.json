@@ -9,8 +9,6 @@
       "es6",
       "dom"
     ],
-    "module": "commonjs",
-    "moduleResolution": "classic",
     "newLine": "LF",
     "noEmitOnError": true,
     "outDir": "js",

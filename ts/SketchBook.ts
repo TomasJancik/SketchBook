@@ -1,9 +1,6 @@
-interface Sketch {
-    name: string;
-    text?: string;
-}
+import {Sketch} from "./Sketch.js";
 
-class SketchBook {
+export class SketchBook {
     private static addEl: Element = document.querySelector("#sketchAdd") as Element;
     private static CONSTANTS = {
         CSS: {
@@ -21,9 +18,7 @@ class SketchBook {
     }
 
     private handleAddClicked = (e: Event): void => {
-        this.sketches.push({
-            name: "New Sketch " + (this.sketches.length + 1),
-        });
+        this.sketches.push( new Sketch("Sketch " + String(this.sketches.length + 1)));
 
         this.render();
         this.editSketch(this.sketches.length - 1);
@@ -51,8 +46,3 @@ class SketchBook {
         });
     }
 }
-
-const sb = new SketchBook(
-    document.querySelector("article") as Element,
-    document.querySelector("nav ul") as Element,
-);
