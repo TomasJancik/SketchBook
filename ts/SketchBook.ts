@@ -5,18 +5,24 @@ interface Sketch {
 
 class SketchBook {
     private static addEl: Element = document.querySelector("#sketchAdd") as Element;
+    private static CONSTANTS = {
+        CSS: {
+            sketch_class: "sketch",
+        }
+    }
     private sketches: Sketch[] = [];
 
     private addSketchElement(sketch: Sketch): void {
         const el: Element = document.createElement(this.tagname);
         el.textContent = sketch.name;
+        el.className = SketchBook.CONSTANTS.CSS.sketch_class;
 
         this.target.appendChild(el);
     }
 
     private handleAddClicked = (e: Event): void => {
         this.sketches.push({
-            name: "New Sketch " + this.sketches.length + 1,
+            name: "New Sketch " + (this.sketches.length + 1),
         });
 
         this.render();
@@ -24,8 +30,9 @@ class SketchBook {
     }
 
     private removeAllSketchElement(): void {
-        document.querySelectorAll(this.tagname + ".sketch").forEach((e: Element) => {
+        document.querySelectorAll(this.tagname + "." + SketchBook.CONSTANTS.CSS.sketch_class).forEach((e: Element) => {
             e.remove();
+            console.log("remove")
         });
     }
 
